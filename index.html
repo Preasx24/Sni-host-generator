@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-TECH SNI Hosts</title>
+    <style>
+        body {
+            background: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+        }
+
+        #banner {
+            background: linear-gradient(to right, #00cc00, #006600);
+            text-align: center;
+            font-size: 32px;
+            padding: 15px;
+            width: 100%;
+            color: white;
+            box-shadow: 0 0 20px #00ff00;
+            margin-bottom: 20px;
+        }
+
+        .network-option {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            padding: 10px 20px;
+            margin: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00ff00;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .network-option:hover {
+            background: rgba(0, 50, 0, 0.9);
+            box-shadow: 0 0 25px #00ff00;
+        }
+
+        .network-option h2 {
+            margin: 0;
+        }
+
+        .hosts-container {
+            display: none;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ff00;
+            max-width: 400px;
+            width: 80%;
+        }
+
+        button {
+            margin: 10px;
+            background: #003300;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 10px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #004d00;
+            border-color: #66ff66;
+        }
+
+        /* Animation for background and elements */
+        @keyframes matrix-fade {
+            0% { color: rgba(0, 255, 0, 0.2); }
+            50% { color: rgba(0, 255, 0, 1); }
+            100% { color: rgba(0, 255, 0, 0.2); }
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://wallpapercave.com/wp/wp2563295.jpg');
+            background-size: cover;
+            opacity: 0.05;
+        }
+
+        .network-option h2 {
+            animation: matrix-fade 3s infinite;
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #ffcc00;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .footer a {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function showHosts(network) {
+            var containers = document.getElementsByClassName('hosts-container');
+            for (var i = 0; i < containers.length; i++) {
+                containers[i].style.display = 'none';
+            }
+
+            var target = document.getElementById(network + '-hosts');
+            if (target) {
+                target.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="banner">D-TECH Zero-Rated SNI Hosts</div>
+
+    <div class="network-option" onclick="showHosts('mtn')">
+        <h2>Generate MTN SNI Hosts</h2>
+    </div>
+    <div id="mtn-hosts" class="hosts-container">
+        <strong>MTN Hosts:</strong>
+        <ul>
+            <li>example.mtn1.com</li>
+            <li>example.mtn2.com</li>
+            <li>example.mtn3.com</li>
+        </ul>
+    </div>
+
+    <div class="network-option" onclick="showHosts('telkom')">
+        <h2>Generate Telkom SNI Hosts</h2>
+    </div>
+    <div id="telkom-hosts" class="hosts-container">
+        <strong>Telkom Hosts:</strong>
+        <ul>
+            <li>example.telkom1.com</li>
+            <li>example.telkom2.com</li>
+            <li>example.telkom3.com</li>
+        </ul>
+    </div>
+
+    <div class="network-option" onclick="showHosts('vodacom')">
+        <h2>Generate Vodacom SNI Hosts</h2>
+    </div>
+    <div id="vodacom-hosts" class="hosts-container">
+        <strong>Vodacom Hosts:</strong>
+        <ul>
+            <li>example.vodacom1.com</li>
+            <li>example.vodacom2.com</li>
+            <li>example.vodacom3.com</li>
+        </ul>
+    </div>
+
+    <div class="network-option" onclick="showHosts('cellc')">
+        <h2>Generate Cell C SNI Hosts</h2>
+    </div>
+    <div id="cellc-hosts" class="hosts-container">
+        <strong>Cell C Hosts:</strong>
+        <ul>
+            <li>example.cellc1.com</li>
+            <li>example.cellc2.com</li>
+            <li>example.cellc3.com</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>Made by <strong>PREASX24</strong></p>
+        <p>
+            Join our VIP group for a bulk SNI host checker: 
+            <a href="https://t.me/DTECHVIP" target="_blank">D-TECH VIP Group</a> (15 ZAR per month)
+        </p>
+        <p>
+            Subscribe to our Telegram channel: 
+            <a href="https://t.me/DTECHXPORT" target="_blank">D-TECH XPORT</a>
+        </p>
+        <p>
+            Check out our YouTube channel: 
+            <a href="https://youtube.com/@d-tech_services?si=H3H0Th5PrD8pxVe1" target="_blank">D-TECH Services</a>
+        </p>
+    </div>
+</body>
+  </html>
