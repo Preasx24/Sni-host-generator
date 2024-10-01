@@ -12,11 +12,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: flex-start; /* Changed to flex-start for proper scrolling */
+            height: auto; /* Changed to auto to accommodate content */
             margin: 0;
-            overflow: hidden;
+            overflow-y: auto; /* Enable vertical scrolling */
             background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+            min-height: 100vh; /* Ensure body fills viewport height */
         }
 
         #banner {
@@ -49,10 +50,6 @@
             box-shadow: 0 0 25px #00ff00;
         }
 
-        .network-option h2 {
-            margin: 0;
-        }
-
         .hosts-container {
             display: none;
             text-align: left;
@@ -64,6 +61,7 @@
             width: 80%;
         }
 
+        /* Button Styles */
         button {
             margin: 10px;
             background: #003300;
@@ -80,23 +78,11 @@
             border-color: #66ff66;
         }
 
-        /* Animation for background and elements */
+        /* Animation for text */
         @keyframes matrix-fade {
             0% { color: rgba(0, 255, 0, 0.2); }
             50% { color: rgba(0, 255, 0, 1); }
             100% { color: rgba(0, 255, 0, 0.2); }
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://wallpapercave.com/wp/wp2563295.jpg');
-            background-size: cover;
-            opacity: 0.05;
         }
 
         .network-option h2 {
@@ -108,6 +94,7 @@
             color: #ffcc00;
             text-align: center;
             font-weight: bold;
+            padding: 20px; /* Added padding for better spacing */
         }
 
         .footer a {
@@ -196,4 +183,4 @@
         </p>
     </div>
 </body>
-  </html>
+            </html>
