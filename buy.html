@@ -7,71 +7,193 @@
   <meta name="author" content="Sero">
   <meta name="copyright" content="This site and its content are owned by StudentHub - 2025">
   <meta name="creator" content="StudentHub">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background-color: #f9fafb;
-      color: #1f2937;
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --gray: #6b7280;
+      --light-gray: #f3f4f6;
+      --white: #ffffff;
+      --border-radius: 8px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
     }
-    h1 {
-      text-align: center;
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1rem 0;
       margin-bottom: 2rem;
     }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo i {
+      font-size: 1.8rem;
+    }
+    
+    /* Page title */
+    .page-title {
+      text-align: center;
+      margin: 2rem 0;
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* Item grid */
     .item-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      gap: 2rem;
+      margin-bottom: 3rem;
     }
+    
     .item {
-      background-color: white;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      text-align: center;
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
     }
-    .item img {
+    
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    
+    .item-image-container {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .item-image {
       width: 100%;
-      height: 160px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-      cursor: pointer;
-      transition: transform 0.2s ease;
+      transition: var(--transition);
     }
-    .item img:hover {
+    
+    .item-image:hover {
       transform: scale(1.05);
     }
-    .item h2 {
-      font-size: 1.2rem;
-      margin: 0.5rem 0;
+    
+    .item-thumbnails {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: var(--light-gray);
     }
-    .item p {
-      font-size: 0.9rem;
-      color: #4b5563;
-    }
-    .desc {
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-      color: #374151;
-    }
-    .price {
-      font-weight: bold;
-      color: #2563eb;
-    }
-    .buy-button {
-      margin-top: 1rem;
-      background-color: #10b981;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
+    
+    .thumbnail {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
       cursor: pointer;
-      font-size: 0.9rem;
+      border: 2px solid transparent;
+      transition: var(--transition);
     }
+    
+    .thumbnail:hover, .thumbnail.active {
+      border-color: var(--primary);
+    }
+    
+    .item-content {
+      padding: 1.5rem;
+    }
+    
+    .item-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    
+    .item-desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    .item-price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .buy-button {
+      display: block;
+      width: 100%;
+      background-color: var(--secondary);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .buy-button:hover {
+      background-color: var(--secondary-dark);
+    }
+    
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -81,108 +203,280 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0,0,0,0.7);
+      animation: fadeIn 0.3s;
     }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
     .modal-content {
-      background: white;
-      max-width: 400px;
+      background: var(--white);
+      max-width: 500px;
       margin: 5% auto;
-      padding: 2rem;
-      border-radius: 12px;
+      border-radius: var(--border-radius);
       position: relative;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+      animation: slideDown 0.3s;
     }
-    .modal-content h3 {
-      margin-bottom: 1rem;
+    
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
-    .modal-content label {
-      display: block;
-      margin-top: 1rem;
+    
+    .modal-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .modal-content input, .modal-content select {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+    
+    .modal-title {
+      font-size: 1.3rem;
+      color: var(--dark);
     }
+    
     .close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      color: #000;
-      font-size: 28px;
+      color: var(--gray);
+      font-size: 1.5rem;
       font-weight: bold;
       cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .close:hover {
+      color: var(--dark);
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-family: inherit;
+      transition: var(--transition);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    .submit-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      transition: var(--transition);
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--white);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--light-gray);
+    }
+    
+    .footer-content {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .item-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .modal-content {
+        width: 90%;
+        margin: 10% auto;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Available Items for Purchase</h1>
-  <div class="item-grid">
-
-    <!-- Example item -->
-    <div class="item">
-      <img src="Spics/item10.webp" alt="Calculator  1" onclick="showImageModal(this.src)">
-      <img src="Spics/item10b.webp" alt="Calculator  2" onclick="showImageModal(this.src)">
-      <h2>Calculator </h2>
-      <p class="desc">SHARP EL-531WH CALCULATOR </p>
-      <p class="price">R200</p>
-      <button class="buy-button" onclick="openBuyForm('Calculator ', 'R200', '8snx8440')">Buy This Item</button>
+  <header>
+    <div class="container header-content">
+      <a href="#" class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>StudentHub</span>
+      </a>
     </div>
+  </header>
+  
+  <div class="container">
+    <h1 class="page-title">Available Items for Purchase</h1>
+    
+    <div class="item-grid">
+      <!-- Example item -->
+      <div class="item">
+        <div class="item-image-container">
+          <img src="Spics/item10.webp" alt="Calculator" class="item-image" onclick="showImageModal(this.src)">
+        </div>
+        <div class="item-thumbnails">
+          <img src="Spics/item10.webp" alt="Calculator view 1" class="thumbnail active" onclick="changeMainImage(this, this.parentElement.previousElementSibling)">
+          <img src="Spics/item10b.webp" alt="Calculator view 2" class="thumbnail" onclick="changeMainImage(this, this.parentElement.previousElementSibling)">
+        </div>
+        <div class="item-content">
+          <h3 class="item-title">Calculator</h3>
+          <p class="item-desc">SHARP EL-531WH CALCULATOR with advanced functions for university students</p>
+          <div class="item-price">R200</div>
+          <button class="buy-button" onclick="openBuyForm('Calculator', 'R200', '8snx8440')">
+            <i class="fas fa-shopping-cart"></i> Purchase Item
+          </button>
+        </div>
+      </div>
 
-    <!-- repeat other items same way as before -->
-    <!-- ... your other items here ... -->
-
+      <!-- Additional items would follow the same structure -->
+      <div class="item">
+        <div class="item-image-container">
+          <img src="https://via.placeholder.com/300x200?text=Textbook" alt="Mathematics Textbook" class="item-image" onclick="showImageModal(this.src)">
+        </div>
+        <div class="item-content">
+          <h3 class="item-title">Mathematics Textbook</h3>
+          <p class="item-desc">Advanced Calculus for Engineering Students - 5th Edition</p>
+          <div class="item-price">R350</div>
+          <button class="buy-button" onclick="openBuyForm('Mathematics Textbook', 'R350', 'txt789')">
+            <i class="fas fa-shopping-cart"></i> Purchase Item
+          </button>
+        </div>
+      </div>
+      
+      <div class="item">
+        <div class="item-image-container">
+          <img src="https://via.placeholder.com/300x200?text=Laptop+Stand" alt="Laptop Stand" class="item-image" onclick="showImageModal(this.src)">
+        </div>
+        <div class="item-content">
+          <h3 class="item-title">Laptop Stand</h3>
+          <p class="item-desc">Adjustable aluminum stand for better ergonomics during study sessions</p>
+          <div class="item-price">R450</div>
+          <button class="buy-button" onclick="openBuyForm('Laptop Stand', 'R450', 'lapstand22')">
+            <i class="fas fa-shopping-cart"></i> Purchase Item
+          </button>
+        </div>
+      </div>
+      
+      <div class="item">
+        <div class="item-image-container">
+          <img src="https://via.placeholder.com/300x200?text=Notebooks" alt="Notebook Set" class="item-image" onclick="showImageModal(this.src)">
+        </div>
+        <div class="item-content">
+          <h3 class="item-title">Notebook Set</h3>
+          <p class="item-desc">5 premium A4 notebooks with different subject dividers</p>
+          <div class="item-price">R180</div>
+          <button class="buy-button" onclick="openBuyForm('Notebook Set', 'R180', 'note456')">
+            <i class="fas fa-shopping-cart"></i> Purchase Item
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Buy Modal -->
   <div id="buyModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h3>Buy Item</h3>
-      <label>Is this your first time?</label>
-      <select id="isFirstTime" onchange="toggleBuyerFields()">
-        <option value="yes">Yes - First Time</option>
-        <option value="no">No - I have my StudentHub password</option>
-      </select>
-
-      <form id="purchaseForm" method="POST" action="https://formsubmit.co/studenthub@gmail.com">
-        <input type="hidden" name="_subject" id="emailSubject">
-        <input type="hidden" name="Item Code" id="emailItemCode">
-        <input type="hidden" name="Item Name" id="emailItemName">
-        <input type="hidden" name="Item Price" id="emailItemPrice">
-        <input type="hidden" name="_next" value="https://www.studenthub.co.za/thankyou.html">
-        <input type="hidden" name="_captcha" value="false">
-
-        <div id="firstTimeFields">
-          <label>Full Name</label>
-          <input type="text" name="Full Name" required>
-          <label>Email</label>
-          <input type="email" name="Email" required>
-          <label>WhatsApp Number</label>
-          <input type="tel" name="WhatsApp" value="078 429 5081" required>
-          <input type="hidden" name="Generated Password" id="generatedPassword">
+      <div class="modal-header">
+        <h3 class="modal-title">Purchase Item</h3>
+        <span class="close" onclick="closeModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Is this your first purchase with us?</label>
+          <select id="isFirstTime" class="form-control" onchange="toggleBuyerFields()">
+            <option value="yes">Yes - First Time</option>
+            <option value="no">No - I have my StudentHub password</option>
+          </select>
         </div>
 
-        <div id="returningFields" style="display:none">
-          <label>StudentHub Password</label>
-          <input type="text" name="StudentHub Password">
-          <label>Email</label>
-          <input type="email" name="Returning Email">
-        </div>
+        <form id="purchaseForm" method="POST" action="https://formsubmit.co/studenthub@gmail.com">
+          <input type="hidden" name="_subject" id="emailSubject">
+          <input type="hidden" name="Item Code" id="emailItemCode">
+          <input type="hidden" name="Item Name" id="emailItemName">
+          <input type="hidden" name="Item Price" id="emailItemPrice">
+          <input type="hidden" name="_next" value="https://www.studenthub.co.za/thankyou.html">
+          <input type="hidden" name="_captcha" value="false">
 
-        <button type="submit">Submit Purchase</button>
-      </form>
+          <div id="firstTimeFields">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="Full Name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="Email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>WhatsApp Number</label>
+              <input type="tel" name="WhatsApp" class="form-control" value="078 429 5081" required>
+            </div>
+            <input type="hidden" name="Generated Password" id="generatedPassword">
+          </div>
+
+          <div id="returningFields" style="display:none">
+            <div class="form-group">
+              <label>StudentHub Password</label>
+              <input type="text" name="StudentHub Password" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="Returning Email" class="form-control">
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Complete Purchase</button>
+        </form>
+      </div>
     </div>
   </div>
 
   <!-- Image Modal -->
   <div id="imgModal" class="modal" onclick="closeModal()">
     <span class="close">&times;</span>
-    <div class="modal-content">
-      <img id="modalImage" src="" alt="Full View" style="width:100%; border-radius:8px;">
+    <div class="modal-content" style="max-width: 90%; background: transparent; box-shadow: none;">
+      <img id="modalImage" src="" alt="Full View" style="width:100%; border-radius: var(--border-radius);">
     </div>
   </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>© 2025 StudentHub. All rights reserved.</p>
+        <p>Designed for academic purposes as part of a university business assignment.</p>
+      </div>
+    </div>
+  </footer>
 
   <script>
     let selectedItemName = '';
@@ -213,11 +507,37 @@
       modal.style.display = "block";
       modalImg.src = src;
     }
+    
+    function changeMainImage(thumbnail, mainImageContainer) {
+      // Remove active class from all thumbnails in this group
+      const thumbnails = thumbnail.parentElement.querySelectorAll('.thumbnail');
+      thumbnails.forEach(thumb => thumb.classList.remove('active'));
+      
+      // Add active class to clicked thumbnail
+      thumbnail.classList.add('active');
+      
+      // Change the main image
+      const mainImage = mainImageContainer.querySelector('.item-image');
+      mainImage.src = thumbnail.src;
+    }
 
     function toggleBuyerFields() {
       const isFirstTime = document.getElementById("isFirstTime").value;
       document.getElementById("firstTimeFields").style.display = isFirstTime === "yes" ? "block" : "none";
       document.getElementById("returningFields").style.display = isFirstTime === "no" ? "block" : "none";
+    }
+    
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const buyModal = document.getElementById('buyModal');
+      const imgModal = document.getElementById('imgModal');
+      
+      if (event.target === buyModal) {
+        closeModal();
+      }
+      if (event.target === imgModal) {
+        closeModal();
+      }
     }
   </script>
 </body>
