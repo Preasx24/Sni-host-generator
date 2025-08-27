@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell or Rent Item - StudentHub</title>
+  <meta name="author" content="Sero">
+  <meta name="copyright" content="This site and its content are owned by StudentHub - 2025">
+  <meta name="creator" content="StudentHub">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button {
+      background: #111827;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .optionalSection {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>List Your Item to Sell or Rent</h1>
+  <form id="listingForm">
+    <label for="hasPassword">Do you already have a password?</label>
+    <select id="hasPassword">
+      <option value="no">No, this is my first time</option>
+      <option value="yes">Yes, I already have one</option>
+    </select>
+
+    <div id="passwordWrapper" class="optionalSection">
+      <label for="password">Enter your password</label>
+      <input type="text" id="password" placeholder="Enter your StudentHub password" />
+    </div>
+
+    <div id="personalInfoSection">
+      <label for="name">Name and Surname</label>
+      <input type="text" id="name" required />
+
+      <label for="age">Age</label>
+      <input type="number" id="age" required />
+
+      <label for="gender">Gender</label>
+      <select id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" value="078 429 5081" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" value="studenthub@gmail.com" required />
+    </div>
+
+    <label for="choice">Are you selling or renting?</label>
+    <select id="choice">
+      <option value="Selling">Sell</option>
+      <option value="Renting">Rent</option>
+    </select>
+
+    <label for="item">Item Name</label>
+    <input type="text" id="item" required />
+
+    <label for="price">Price (in Rands)</label>
+    <input type="number" id="price" required />
+
+    <label for="info">Additional Info</label>
+    <textarea id="info" rows="4"></textarea>
+
+    <p style="margin-top:1rem;font-weight:500;color:#4b5563">
+      Please remember to attach the following files manually in the email:
+    </p>
+    <ul style="color:#374151" id="attachmentsList">
+      <li>2 Photos of the item you want to sell or rent</li>
+    </ul>
+
+    <button type="submit">Submit via Email</button>
+  </form>
+
+  <script>
+    function generatePassword(length = 8) {
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let password = "";
+      for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return password;
+    }
+
+    const hasPasswordSelect = document.getElementById('hasPassword');
+    const personalInfoSection = document.getElementById('personalInfoSection');
+    const passwordWrapper = document.getElementById('passwordWrapper');
+    const attachmentsList = document.getElementById('attachmentsList');
+
+    hasPasswordSelect.addEventListener('change', function () {
+      const value = this.value;
+      const personalInputs = personalInfoSection.querySelectorAll('input, select');
+
+      if (value === 'yes') {
+        personalInfoSection.style.display = 'none';
+        passwordWrapper.style.display = 'block';
+        attachmentsList.innerHTML = "<li>Photo of the item you want to sell or rent</li>";
+
+        personalInputs.forEach(input => input.required = false);
+        document.getElementById('password').required = true;
+      } else {
+        personalInfoSection.style.display = 'block';
+        passwordWrapper.style.display = 'none';
+        attachmentsList.innerHTML = `
+          <li>2 Photos of the item you want to sell or rent</li>
+        `;
+
+        personalInputs.forEach(input => input.required = true);
+        document.getElementById('password').required = false;
+      }
+    });
+
+    document.getElementById('listingForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const hasPassword = hasPasswordSelect.value;
+      const choice = document.getElementById('choice').value;
+      const item = document.getElementById('item').value;
+      const price = document.getElementById('price').value;
+      const info = document.getElementById('info').value;
+
+      let body = `Dear StudentHub,%0D%0A%0D%0AI would like to submit the following item for ${choice.toLowerCase()}.%0D%0A%0D%0A`;
+
+      if (hasPassword === 'yes') {
+        const enteredPassword = document.getElementById('password').value;
+        body += `-- PASSWORD --%0D%0A${enteredPassword}%0D%0A%0D%0A`;
+      } else {
+        const name = document.getElementById('name').value;
+        const age = document.getElementById('age').value;
+        const gender = document.getElementById('gender').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const newPassword = generatePassword();
+
+        body += `-- PERSONAL DETAILS --%0D%0AName and Surname: ${name}%0D%0AAge: ${age}%0D%0AGender: ${gender}%0D%0APhone: ${phone}%0D%0AEmail: ${email}%0D%0A%0D%0A-- NEW PASSWORD --%0D%0A${newPassword}%0D%0ASave this for future use.%0D%0A%0D%0A`;
+      }
+
+      body += `-- ITEM DETAILS --%0D%0AItem: ${item}%0D%0APrice: R${price}%0D%0AAdditional Info: ${info}%0D%0A%0D%0A-- ATTACHMENTS --%0D%0APlease attach the required images as listed.%0D%0A%0D%0AThank you!`;
+
+      const subject = `${choice} Request: ${item}`;
+      const mailtoLink = `mailto:studenthub@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+      window.location.href = mailtoLink;
+
+      setTimeout(() => {
+        window.location.href = "thankyou.html";
+      }, 30);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Textbooks - StudentHub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #f3f4f6;
+      color: #111827;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+    .card {
+      background: white;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .card-content {
+      padding: 1rem;
+    }
+    .card-content h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #1f2937;
+    }
+    .card-content p {
+      margin: 0.25rem 0;
+      font-size: 0.95rem;
+      color: #4b5563;
+    }
+    .card-content .code {
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+    .card-content .price {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #111827;
+    }
+    .buy-btn {
+      margin-top: 1rem;
+      background: #2563eb;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .buy-btn:hover {
+      background: #1e40af;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .modal-content h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: #1f2937;
+    }
+    .modal-content label {
+      display: block;
+      margin-top: 0.75rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .modal-content input, .modal-content select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 0.3rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    .modal-content button {
+      margin-top: 1rem;
+      background: #10b981;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .close-btn {
+      margin-top: 0.5rem;
+      background: #ef4444;
+    }
+
+    /* Image modal styles */
+    #imageModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+    #imageModal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Available Textbooks</h1>
+  <div class="grid">
+    <!-- Book Card 1 -->
+    <div class="card">
+      <img src="book1.jpg" alt="Book Cover" />
+      <div class="card-content">
+        <h3>Supply Chain management</h3>
+        <p>2nd edition Gideon Horn (Badenhorst-weiss, Cook, Heckroodt, Howell, Jeppile, Strydorm).</p>
+        <p class="code">Code: BM101</p>
+        <p class="price">R250</p>
+        <button class="buy-btn" onclick="openForm('Supply Chain management', 'R250', 'BM101')">Buy</button>
+      </div>
+    </div>
+   
+    <!-- Book Card -->
+    <div class="card">
+      <img src="item9.webp" alt="Book Cover" />
+      <div class="card-content">
+        <h3>Applied Accounting</h3>
+        <p>Edited by Juan-Pierre Brouwer, Tracy Beck. Revised Edition 2019.</p>
+        <p class="code">Code: ACC</p>
+        <p class="price">R250</p>
+        <button class="buy-btn" onclick="openForm('Applied Accounting', 'R250', 'ACC')">Buy</button>
+      </div>
+    </div>
+
+    <!-- Book Card -->
+    <div class="card">
+      <img src="book3.jpg" alt="Book Cover" />
+      <div class="card-content">
+        <h3>Entrepreneurship, New Venture Management</h3>
+        <p>7th Edition textbook by Van Aardt, Bezuidenhout (Bendeman, Clarence, Sifolo, Swanepoel).</p>
+        <p class="code">Code: BMM</p>
+        <p class="price">R500</p>
+        <button class="buy-btn" onclick="openForm('Entrepreneurship, New Venture Management', 'R500', 'BMM')">Buy</button>
+      </div>
+    </div>
+
+    <!-- Book Card -->
+    <div class="card">
+      <img src="book2.jpg" alt="Book Cover" />
+      <div class="card-content">
+        <h3>Managing Tourism in South Africa</h3>
+        <p>2nd edition edited by Richard George.</p>
+        <p class="code">Code: TOU</p>
+        <p class="price">R250</p>
+        <button class="buy-btn" onclick="openForm('Managing Tourism in South Africa', 'R250', 'TOU')">Buy</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Form -->
+  <div class="modal" id="buyModal">
+    <div class="modal-content">
+      <h2>Book Purchase Form</h2>
+      <form action="https://formsubmit.co/studenthub@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Book Order - StudentHub">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.studenthub.co.za/thankyou.html">
+        <input type="hidden" id="bookTitle" name="Book Title">
+        <input type="hidden" id="bookCode" name="Book Code">
+        <input type="hidden" id="bookPrice" name="Price">
+
+        <label for="fullName">Name & Surname</label>
+        <input type="text" name="Name" id="fullName" required />
+
+        <label for="age">Age</label>
+        <input type="number" name="Age" id="age" required />
+
+        <label for="email">Email</label>
+        <input type="email" name="Email" id="email" required />
+
+        <label for="whatsapp">WhatsApp Number</label>
+        <input type="tel" name="WhatsApp" id="whatsapp" value="0784295081" required />
+
+        <label for="pickup">Pickup Point</label>
+        <select name="Pickup Point" id="pickup" required>
+          <option value="">Select a point</option>
+          <option value="2nd Avenue">2nd Avenue</option>
+          <option value="South Campus">South Campus</option>
+        </select>
+
+        <button type="submit">Send Order</button>
+        <button type="button" class="close-btn" onclick="closeForm()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Image Preview Modal -->
+  <div id="imageModal" class="modal" onclick="closeImageModal()">
+    <img id="fullImage" />
+  </div>
+
+  <script>
+    function openForm(title, price, code) {
+      document.getElementById('buyModal').style.display = 'flex';
+      document.getElementById('bookTitle').value = title;
+      document.getElementById('bookPrice').value = price;
+      document.getElementById('bookCode').value = code;
+    }
+
+    function closeForm() {
+      document.getElementById('buyModal').style.display = 'none';
+    }
+
+    // Image preview logic
+    const imageModal = document.getElementById("imageModal");
+    const fullImage = document.getElementById("fullImage");
+
+    document.querySelectorAll('.card img').forEach(img => {
+      img.addEventListener('click', function() {
+        fullImage.src = this.src;
+        imageModal.style.display = 'flex';
+      });
+    });
+
+    function closeImageModal() {
+      imageModal.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

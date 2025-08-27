@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudentHub Services</title>
+  <meta name="author" content="Sero">
+  <meta name="copyright" content="This site and its content are owned by StudentHub - 2025">
+  <meta name="creator" content="StudentHub">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #2c7be5;
+      color: #fff;
+      padding: 1.2rem;
+      text-align: center;
+    }
+    nav {
+      background: #1a5dbf;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #2c7be5;
+      color: white;
+      margin-top: 2rem;
+    }
+    ul {
+      line-height: 1.8;
+    }
+    form {
+      margin-top: 2rem;
+      background: #fafafa;
+      padding: 1.5rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    form button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #2c7be5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #1a5dbf;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>StudentHub</h1>
+    <p>Affordable & Smart Digital Solutions for Students</p>
+  </header>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#order">Order</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="container">
+    <section id="services">
+      <h2>Our Website Packages</h2>
+      <ul>
+        <li><strong>R50</strong> – 1-2 page static website</li>
+        <li><strong>R80</strong> – Multi-page static website (3+ pages)</li>
+        <li><strong>+R80/year</strong> – Custom domain (e.g., www.yourname.co.za)</li>
+      </ul>
+      <p><strong>You get:</strong></p>
+      <ul>
+        <li>Clean, mobile-friendly website</li>
+        <li>Your own text/images included</li>
+        <li>Hosting assistance (free/budget options)</li>
+        <li>Ongoing WhatsApp & email support</li>
+      </ul>
+    </section>
+
+    <section id="order">
+      <h2>Place Your Order</h2>
+      <form action="https://formsubmit.co/studenthub@gmail.com" method="POST">
+        <!-- Hidden inputs -->
+        <input type="hidden" name="_next" value="thankyou.html">
+        <input type="hidden" name="_captcha" value="false">
+
+        <label for="service">Choose Package:</label>
+        <select id="service" name="Service" required>
+          <option value="1-2 Page Website (R50)">1-2 Page Website (R50)</option>
+          <option value="Multi-Page Website (R80)">Multi-Page Website (R80)</option>
+        </select>
+
+        <label for="domain">Need a Custom Domain?</label>
+        <select id="domain" name="Custom Domain" required>
+          <option value="Yes">Yes (+R80/year)</option>
+          <option value="No">No</option>
+        </select>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="Email" required />
+
+        <label for="whatsapp">WhatsApp Number:</label>
+        <input type="text" id="whatsapp" name="WhatsApp" placeholder="e.g. 078 429 5081" required />
+
+        <button type="submit">Send Order</button>
+      </form>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:studenthub@gmail.com">studenthub@gmail.com</a></p>
+      <p>WhatsApp: 078 429 5081</p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 StudentHub — Built & managed by <strong>Sero</strong>. All rights reserved.
+  </footer>
+</body>
+</html>

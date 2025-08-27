@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Word/Excel Assistance Session - Student Hub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      padding: 2rem;
+      color: #1f2937;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #2563eb;
+    }
+    .form-container {
+      background: white;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .submit-btn {
+      background-color: #2563eb;
+      color: white;
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Book Word/Excel Assistance</h1>
+  <div class="form-container">
+    <form action="https://formsubmit.co/studenthubsmartplace@gmail.com" method="POST">
+      
+      <!-- Redirect to thank you page after submission -->
+      <input type="hidden" name="_next" value="https://studenthub.co.za/thankyou.html">
+      
+      <!-- Disable CAPTCHA -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Form fields -->
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="fullName" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp Number</label>
+        <input type="text" name="whatsapp" required>
+      </div>
+      <div class="form-group">
+        <label>Select Assistance Needed</label>
+        <select name="serviceType" required>
+          <option value="">-- Select --</option>
+          <option value="Microsoft Word">Microsoft Word</option>
+          <option value="Microsoft Excel">Microsoft Excel</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Choose Session Date</label>
+        <input type="date" name="sessionDate" required>
+      </div>
+      <div class="form-group">
+        <label>Choose Session Time</label>
+        <input type="time" name="sessionTime" required>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Booking Request</button>
+    </form>
+  </div>
+
+</body>
+</html>
