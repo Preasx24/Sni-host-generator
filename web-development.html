@@ -5,154 +5,245 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StudentHub Services</title>
   <meta name="author" content="Sero">
-  <meta name="copyright" content="This site and its content are owned by StudentHub - 2025">
+  <meta name="copyright" content="This site and its content are owned by DTECH - 2025">
   <meta name="creator" content="StudentHub">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #eef2f7;
       margin: 0;
-      padding: 0;
       color: #333;
     }
+
     header {
-      background: #2c7be5;
-      color: #fff;
-      padding: 1.2rem;
+      background: linear-gradient(90deg, #2c7be5, #1a5dbf);
+      color: white;
+      padding: 2rem 1rem;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
     nav {
+      display: flex;
+      justify-content: center;
       background: #1a5dbf;
-      padding: 0.5rem;
-      text-align: center;
+      padding: 0.75rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 1rem;
+      margin: 0 1.5rem;
       font-weight: bold;
+      transition: 0.3s;
     }
+
     nav a:hover {
       text-decoration: underline;
+      color: #ffdd57;
     }
+
     .container {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 10px;
-    }
-    footer {
-      text-align: center;
+      max-width: 1000px;
+      margin: 2rem auto;
       padding: 1rem;
-      background: #2c7be5;
-      color: white;
-      margin-top: 2rem;
     }
-    ul {
-      line-height: 1.8;
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
     }
-    form {
-      margin-top: 2rem;
-      background: #fafafa;
+
+    .service-card {
+      background: white;
       padding: 1.5rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
     }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .service-card h3 {
+      margin-top: 0;
+      color: #2c7be5;
+    }
+
+    .service-card p, .service-card li {
+      line-height: 1.6;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #1a5dbf;
+    }
+
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+
     form label {
       display: block;
-      margin-top: 1rem;
+      margin: 1rem 0 0.5rem;
       font-weight: bold;
     }
-    form input, form select {
+
+    form input, form select, form textarea {
       width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.5rem;
+      padding: 0.75rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 1rem;
+      transition: 0.3s;
     }
+
+    form input:focus, form select:focus, form textarea:focus {
+      border-color: #2c7be5;
+      outline: none;
+    }
+
     form button {
       margin-top: 1.5rem;
       padding: 0.75rem 1.5rem;
-      background-color: #2c7be5;
+      background: #2c7be5;
       color: white;
       border: none;
-      border-radius: 6px;
-      font-size: 1rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
       cursor: pointer;
+      transition: 0.3s;
     }
+
     form button:hover {
-      background-color: #1a5dbf;
+      background: #1a5dbf;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #2c7be5;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        margin: 0 0.75rem;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>StudentHub</h1>
     <p>Affordable & Smart Digital Solutions for Students</p>
   </header>
+
   <nav>
     <a href="#services">Services</a>
     <a href="#order">Order</a>
     <a href="#contact">Contact</a>
   </nav>
+
   <div class="container">
+    <!-- Services Section -->
     <section id="services">
       <h2>Our Website Packages</h2>
-      <ul>
-        <li><strong>R50</strong> – 1-2 page static website</li>
-        <li><strong>R80</strong> – Multi-page static website (3+ pages)</li>
-        <li><strong>+R80/year</strong> – Custom domain (e.g., www.yourname.co.za)</li>
-      </ul>
-      <p><strong>You get:</strong></p>
-      <ul>
-        <li>Clean, mobile-friendly website</li>
-        <li>Your own text/images included</li>
-        <li>Hosting assistance (free/budget options)</li>
-        <li>Ongoing WhatsApp & email support</li>
-      </ul>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>R50</h3>
+          <p>1-2 page static website</p>
+          <ul>
+            <li>Clean, mobile-friendly design</li>
+            <li>Your own text/images</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h3>R80</h3>
+          <p>Multi-page static website (3+ pages)</p>
+          <ul>
+            <li>Custom pages for content</li>
+            <li>Mobile responsive layout</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h3>+R80/year</h3>
+          <p>Custom domain (e.g., www.yourname.co.za)</p>
+          <ul>
+            <li>Easy-to-remember domain</li>
+            <li>Hosting support included</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
+    <!-- Order Form -->
     <section id="order">
       <h2>Place Your Order</h2>
-      <form action="https://formsubmit.co/studenthub@gmail.com" method="POST">
-        <!-- Hidden inputs -->
-        <input type="hidden" name="_next" value="thankyou.html">
-        <input type="hidden" name="_captcha" value="false">
+      <form>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your full name" required>
 
-        <label for="service">Choose Package:</label>
-        <select id="service" name="Service" required>
-          <option value="1-2 Page Website (R50)">1-2 Page Website (R50)</option>
-          <option value="Multi-Page Website (R80)">Multi-Page Website (R80)</option>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your email" required>
+
+        <label for="package">Select Package</label>
+        <select id="package">
+          <option value="r50">R50 – 1-2 page</option>
+          <option value="r80">R80 – Multi-page</option>
+          <option value="domain">+R80/year – Custom Domain</option>
         </select>
 
-        <label for="domain">Need a Custom Domain?</label>
-        <select id="domain" name="Custom Domain" required>
-          <option value="Yes">Yes (+R80/year)</option>
-          <option value="No">No</option>
-        </select>
+        <label for="details">Additional Details</label>
+        <textarea id="details" rows="4" placeholder="Any additional information"></textarea>
 
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="Email" required />
-
-        <label for="whatsapp">WhatsApp Number:</label>
-        <input type="text" id="whatsapp" name="WhatsApp" placeholder="e.g. 078 429 5081" required />
-
-        <button type="submit">Send Order</button>
+        <button type="submit">Submit Order</button>
       </form>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
       <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:studenthub@gmail.com">studenthub@gmail.com</a></p>
-      <p>WhatsApp: 078 429 5081</p>
+      <p style="text-align:center;">WhatsApp/Call: <strong>+27 123 456 789</strong></p>
+      <p style="text-align:center;">Email: <strong>support@studenthub.co.za</strong></p>
     </section>
   </div>
 
   <footer>
     &copy; 2025 StudentHub — Built & managed by <strong>Sero</strong>. All rights reserved.
   </footer>
+
 </body>
 </html>
