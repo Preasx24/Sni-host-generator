@@ -7,116 +7,380 @@
   <meta name="author" content="Sero">
   <meta name="copyright" content="This site and its content are owned by StudentHub - 2025">
   <meta name="creator" content="StudentHub">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background: #f3f4f6;
-      color: #1f2937;
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --gray: #6b7280;
+      --light-gray: #f3f4f6;
+      --white: #ffffff;
+      --border-radius: 8px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
     }
-    h1 {
-      text-align: center;
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Header */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1rem 0;
       margin-bottom: 2rem;
     }
-    form {
-      max-width: 600px;
-      margin: auto;
-      background: white;
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo i {
+      font-size: 1.8rem;
+    }
+    
+    /* Page title */
+    .page-title {
+      text-align: center;
+      margin: 2rem 0;
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* Form styling */
+    .form-container {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 3rem;
+    }
+    
+    .form-header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .form-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    
+    .form-body {
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-    label {
+    
+    .form-section {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .form-section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-title i {
+      font-size: 1.1rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    
+    .form-group label {
       display: block;
-      margin-top: 1rem;
-      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark);
     }
-    input, select, textarea {
+    
+    .form-control {
       width: 100%;
-      padding: 10px;
-      margin-top: 0.5rem;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      font-size: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-family: inherit;
+      transition: var(--transition);
     }
-    button {
-      background: #111827;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      margin-top: 1.5rem;
-      font-size: 1rem;
-      cursor: pointer;
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
     }
-    button:hover {
-      background: #2563eb;
-    }
+    
     .optionalSection {
       display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .attachments-box {
+      background-color: var(--light-gray);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin-top: 1.5rem;
+    }
+    
+    .attachments-title {
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--dark);
+    }
+    
+    .attachments-list {
+      list-style-type: none;
+    }
+    
+    .attachments-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .attachments-list li:before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+    }
+    
+    .submit-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      transition: var(--transition);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--white);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--light-gray);
+    }
+    
+    .footer-content {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .form-body {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>List Your Item to Sell or Rent</h1>
-  <form id="listingForm">
-    <label for="hasPassword">Do you already have a password?</label>
-    <select id="hasPassword">
-      <option value="no">No, this is my first time</option>
-      <option value="yes">Yes, I already have one</option>
-    </select>
-
-    <div id="passwordWrapper" class="optionalSection">
-      <label for="password">Enter your password</label>
-      <input type="text" id="password" placeholder="Enter your StudentHub password" />
+  <header>
+    <div class="container header-content">
+      <a href="#" class="logo">
+        <i class="fas fa-graduation-cap"></i>
+        <span>StudentHub</span>
+      </a>
     </div>
+  </header>
+  
+  <div class="container">
+    <h1 class="page-title">List Your Item to Sell or Rent</h1>
+    
+    <div class="form-container">
+      <div class="form-header">
+        <h2><i class="fas fa-tag"></i> Item Listing Form</h2>
+      </div>
+      
+      <div class="form-body">
+        <form id="listingForm">
+          <div class="form-section">
+            <h3 class="section-title"><i class="fas fa-user-circle"></i> Account Information</h3>
+            
+            <div class="form-group">
+              <label for="hasPassword">Do you already have a StudentHub password?</label>
+              <select id="hasPassword" class="form-control">
+                <option value="no">No, this is my first time</option>
+                <option value="yes">Yes, I already have one</option>
+              </select>
+            </div>
 
-    <div id="personalInfoSection">
-      <label for="name">Name and Surname</label>
-      <input type="text" id="name" required />
+            <div id="passwordWrapper" class="optionalSection">
+              <div class="form-group">
+                <label for="password">Enter your password</label>
+                <input type="text" id="password" class="form-control" placeholder="Enter your StudentHub password" />
+              </div>
+            </div>
+          </div>
 
-      <label for="age">Age</label>
-      <input type="number" id="age" required />
+          <div id="personalInfoSection">
+            <div class="form-section">
+              <h3 class="section-title"><i class="fas fa-address-card"></i> Personal Information</h3>
+              
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" class="form-control" required placeholder="Your name and surname" />
+              </div>
 
-      <label for="gender">Gender</label>
-      <select id="gender">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-      </select>
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" class="form-control" required min="16" max="100" />
+              </div>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" value="078 429 5081" required />
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" value="studenthub@gmail.com" required />
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" class="form-control" value="078 429 5081" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" value="studenthub@gmail.com" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3 class="section-title"><i class="fas fa-cube"></i> Item Details</h3>
+            
+            <div class="form-group">
+              <label for="choice">Are you selling or renting?</label>
+              <select id="choice" class="form-control">
+                <option value="Selling">Sell</option>
+                <option value="Renting">Rent</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="item">Item Name</label>
+              <input type="text" id="item" class="form-control" required placeholder="What are you listing?" />
+            </div>
+
+            <div class="form-group">
+              <label for="price">Price (in Rands)</label>
+              <input type="number" id="price" class="form-control" required min="1" placeholder="0" />
+            </div>
+
+            <div class="form-group">
+              <label for="info">Additional Information</label>
+              <textarea id="info" class="form-control" rows="4" placeholder="Describe your item's condition, specifications, etc."></textarea>
+            </div>
+          </div>
+
+          <div class="attachments-box">
+            <div class="attachments-title"><i class="fas fa-paperclip"></i> Required Attachments</div>
+            <ul class="attachments-list" id="attachmentsList">
+              <li>2 Photos of the item you want to sell or rent</li>
+            </ul>
+          </div>
+
+          <div class="form-group" style="margin-top: 2rem;">
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i> Submit Listing
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 
-    <label for="choice">Are you selling or renting?</label>
-    <select id="choice">
-      <option value="Selling">Sell</option>
-      <option value="Renting">Rent</option>
-    </select>
-
-    <label for="item">Item Name</label>
-    <input type="text" id="item" required />
-
-    <label for="price">Price (in Rands)</label>
-    <input type="number" id="price" required />
-
-    <label for="info">Additional Info</label>
-    <textarea id="info" rows="4"></textarea>
-
-    <p style="margin-top:1rem;font-weight:500;color:#4b5563">
-      Please remember to attach the following files manually in the email:
-    </p>
-    <ul style="color:#374151" id="attachmentsList">
-      <li>2 Photos of the item you want to sell or rent</li>
-    </ul>
-
-    <button type="submit">Submit via Email</button>
-  </form>
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>© 2025 StudentHub. All rights reserved.</p>
+        <p>Designed for academic purposes as part of a university business assignment.</p>
+      </div>
+    </div>
+  </footer>
 
   <script>
     function generatePassword(length = 8) {
@@ -133,6 +397,7 @@
     const passwordWrapper = document.getElementById('passwordWrapper');
     const attachmentsList = document.getElementById('attachmentsList');
 
+    // Initial setup
     hasPasswordSelect.addEventListener('change', function () {
       const value = this.value;
       const personalInputs = personalInfoSection.querySelectorAll('input, select');
@@ -154,6 +419,11 @@
         personalInputs.forEach(input => input.required = true);
         document.getElementById('password').required = false;
       }
+    });
+
+    // Trigger change event on page load to set initial state
+    window.addEventListener('DOMContentLoaded', function() {
+      hasPasswordSelect.dispatchEvent(new Event('change'));
     });
 
     document.getElementById('listingForm').addEventListener('submit', function (event) {
