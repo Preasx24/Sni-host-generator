@@ -3,181 +3,429 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Hub</title>
+  <title>Student Hub - Academic Marketplace</title>
   <meta name="author" content="Student Hub">
   <meta name="copyright" content="This site and its content are owned by Student Hub - 2025">
   <meta name="creator" content="Student Hub">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --secondary-dark: #0d9668;
+      --accent: #f59e0b;
+      --accent-dark: #d97706;
+      --dark: #111827;
+      --light: #f9fafb;
+      --gray: #e5e7eb;
+      --text: #1f2937;
+      --text-light: #4b5563;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9fafb;
-      color: #1f2937;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
     }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Header Styles */
     header {
-      background: #111827;
-      color: #fff;
-      text-align: center;
-      padding: 2rem 1rem;
+      background: var(--dark);
+      color: white;
+      padding: 1.2rem 0;
       position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
     header img {
-      max-width: 120px;
-      margin-bottom: 0.5rem;
+      max-width: 50px;
+      height: auto;
     }
+    
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+    
     header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
       margin: 0;
-      font-size: 2rem;
     }
-    .support-button {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-    .support-button a {
-      background-color: #f59e0b;
-      color: #1f2937;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
+    
+    .tagline {
       font-size: 0.85rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease;
+      opacity: 0.8;
+      margin-top: 0.2rem;
     }
-    .support-button a:hover {
-      background-color: #d97706;
-    }
-    .textbook-button {
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .textbook-button a {
-      display: inline-block;
-      padding: 0.4rem 1rem;
-      font-size: 0.9rem;
-      text-decoration: none;
-      color: white;
-      background-color: #2563eb;
-      border-radius: 6px;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
-    }
-    .textbook-button a:hover {
-      background-color: #1d4ed8;
-    }
-    main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .grid {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      margin-bottom: 2rem;
-    }
-    .card {
-      background: white;
-      padding: 1rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-      text-align: center;
-    }
-    .card h2 {
-      margin-bottom: 1rem;
-    }
-    .card a {
-      display: inline-block;
-      margin-top: 0.5rem;
+    
+    .support-button a {
+      background-color: var(--accent);
+      color: var(--dark);
       padding: 0.6rem 1.2rem;
-      font-size: 1rem;
+      border-radius: 4px;
+      font-weight: 600;
       text-decoration: none;
-      color: white;
-      background-color: #2563eb;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .support-button a:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+    
+    /* Navigation */
+    .main-nav {
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.8rem 0;
+    }
+    
+    .nav-container a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-container a:hover {
+      background: var(--gray);
+      color: var(--primary);
+    }
+    
+    /* Main Content */
+    main {
+      padding: 2.5rem 0;
+    }
+    
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .hero h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .service-card {
+      background: white;
       border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+    }
+    
+    .service-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    
+    .service-card p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .service-card a {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
       font-weight: 600;
       transition: background-color 0.3s ease;
     }
-    .card a:hover {
-      background-color: #1d4ed8;
+    
+    .service-card a:hover {
+      background-color: var(--primary-dark);
     }
-    .contact {
-      background: #e5e7eb;
-      padding: 1rem;
+    
+    /* Contact Section */
+    .contact-section {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2.5rem;
       text-align: center;
-      border-radius: 6px;
-      font-size: 0.9rem;
+    }
+    
+    .contact-section h3 {
+      font-size: 1.5rem;
       margin-bottom: 1.5rem;
+      color: var(--dark);
     }
-    footer {
-      background: #f3f4f6;
-      padding: 2rem 1rem;
-      text-align: center;
-      font-size: 0.95rem;
-      color: #4b5563;
+    
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
     }
-    footer a {
-      color: #2563eb;
+    
+    .contact-method {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .contact-icon {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+    
+    .contact-method p {
+      margin: 0.2rem 0;
+    }
+    
+    .contact-method a {
+      color: var(--primary);
       text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 500;
+      transition: color 0.3s ease;
     }
-    footer a:hover {
+    
+    .contact-method a:hover {
+      color: var(--primary-dark);
       text-decoration: underline;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 2.5rem 0;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .logo-container {
+        flex-direction: column;
+      }
+      
+      .nav-container {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Student Hub Logo" />
-    <h1>Student Hub</h1>
-    <div class="support-button">
-      <a href="support.html" title="Support Student Hub">
-        Support Us
-      </a>
+    <div class="container header-content">
+      <div class="logo-container">
+        <img src="logo.png" alt="Student Hub Logo" />
+        <div class="brand">
+          <h1>Student Hub</h1>
+          <span class="tagline">Academic Marketplace & Resource Center</span>
+        </div>
+      </div>
+      <div class="support-button">
+        <a href="support.html">
+          <i class="fas fa-hands-helping"></i> Support Us
+        </a>
+      </div>
     </div>
   </header>
+  
+  <nav class="main-nav">
+    <div class="container nav-container">
+      <a href="text.html"><i class="fas fa-book"></i> Textbooks</a>
+      <a href="ask.html"><i class="fas fa-question-circle"></i> Ask a Question</a>
+      <a href="in.html"><i class="fas fa-tag"></i> Sell Items</a>
+      <a href="buy.html"><i class="fas fa-shopping-cart"></i> Buy Items</a>
+    </div>
+  </nav>
 
-  <div class="textbook-button">
-    <a href="text.html">Textbooks</a>
-    <a href="ask.html" style="margin-left: 10px; background-color: #10b981;">
-      Ask a Question
-    </a>
-  </div>
-
-  <main>
-    <div class="grid">
-      <div class="card">
-        <h2>Sell or Rent Out Your Items</h2>
+  <main class="container">
+    <section class="hero">
+      <h2>Your Campus Marketplace</h2>
+      <p>Connect with fellow students to buy, sell, and rent academic resources and more.</p>
+    </section>
+    
+    <section class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-tags"></i>
+        </div>
+        <h3>Sell or Rent Out Your Items</h3>
+        <p>Turn your unused textbooks and items into cash by listing them on our platform.</p>
         <a href="in.html">Start Listing</a>
       </div>
-      <div class="card">
-        <h2>Buy Second-Hand Items</h2>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-shopping-basket"></i>
+        </div>
+        <h3>Buy Second-Hand Items</h3>
+        <p>Find affordable textbooks, electronics, and dorm essentials from other students.</p>
         <a href="buy.html">Browse Items</a>
       </div>
-      <div class="card">
-        <h2>Rent Items</h2>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-key"></i>
+        </div>
+        <h3>Rent Items</h3>
+        <p>Access what you need temporarily without the commitment of purchasing.</p>
         <a href="sel.html">Browse Rentals</a>
       </div>
-      <div class="card">
-        <h2>Our Services</h2>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-concierge-bell"></i>
+        </div>
+        <h3>Our Services</h3>
+        <p>Discover all the ways we can help you succeed in your academic journey.</p>
         <a href="sev.html">View Services</a>
       </div>
-    </div>
-
-    <div class="contact">
-      <p>Need help or have questions?</p>
-      <p>Email: <a href="mailto:studenthubsmartplace@gmail.com">studenthubsmartplace@gmail.com</a></p>
-      <p>WhatsApp: 078 429 5081</p>
-    </div>
+    </section>
+    
+    <section class="contact-section">
+      <h3>Need Help or Have Questions?</h3>
+      <div class="contact-info">
+        <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <p>Email us at:</p>
+          <a href="mailto:studenthubsmartplace@gmail.com">studenthubsmartplace@gmail.com</a>
+        </div>
+        
+        <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <p>WhatsApp:</p>
+          <p>078 429 5081</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <div>
-      <a href="terms.html">Terms and Conditions</a>
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="terms.html">Terms and Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <p class="copyright">&copy; 2025 Student Hub — All rights reserved.</p>
     </div>
-    &copy; 2025 Student Hub — All rights reserved.
   </footer>
 </body>
 </html>
